@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { APImovieCredits } from "services/Api"
 import CastItem from 'components/CastItem';
 
-
 const Cast = () => {
 
   const [actors, setActors] = useState([])

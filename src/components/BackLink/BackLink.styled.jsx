@@ -6,15 +6,19 @@ display: inline-flex;
 align-items: center;
 gap: 4px;
 padding: 8px;
-color: black;
 text-decoration: none;
-font-weight: 500;
+font-weight: 400;
+font-size: 16px;
 text-transform: uppercase;
-background-color: blue
+color: black
+background-color: #D2CECA;
 border-radius: 4px;
+box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); 
+  &:hover,
+  &:focus {
+    background-color: #A5998C;
+    color: black
+  }
 
-&.active {
-    color: white;
-    background-color: orangered;
-}
 `

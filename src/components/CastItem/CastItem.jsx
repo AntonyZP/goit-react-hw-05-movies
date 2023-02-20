@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const CastItem =({ name, profile_path, character }) => {
     const img = profile_path
     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
@@ -13,3 +15,9 @@ const CastItem =({ name, profile_path, character }) => {
 }
 
 export default CastItem
+
+CastItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  profile_path: PropTypes.string,
+  character: PropTypes.string.isRequired,
+};

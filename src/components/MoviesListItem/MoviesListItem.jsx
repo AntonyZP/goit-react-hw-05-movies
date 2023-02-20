@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-
+import PropTypes from 'prop-types';
 
 const MoviesListItem = ({title, id}) => {
   const location = useLocation();
@@ -12,3 +12,8 @@ const MoviesListItem = ({title, id}) => {
 }
 
 export default MoviesListItem
+
+MoviesListItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import MoviesListItem from "components/MoviesListItem"
 
 const TrendingMoviesList = ({trendingMovies}) => {
@@ -15,3 +16,7 @@ const TrendingMoviesList = ({trendingMovies}) => {
 }
 
 export default TrendingMoviesList
+
+TrendingMoviesList.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.object),
+  };

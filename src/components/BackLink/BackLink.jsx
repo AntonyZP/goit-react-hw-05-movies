@@ -1,9 +1,5 @@
-// import { StyledLink } from './BackLink.styled'
-
-// import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { StyledLink } from './BackLink.styled';
-
-
 
 const BackLink = ({ to, children }) => {
   return (
@@ -14,3 +10,8 @@ const BackLink = ({ to, children }) => {
 };
 
 export default BackLink
+
+BackLink.propTypes = {
+  to: PropTypes.object.isRequired,
+  children: PropTypes.node,
+};

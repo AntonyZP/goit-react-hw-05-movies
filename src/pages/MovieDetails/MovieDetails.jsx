@@ -1,7 +1,8 @@
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense  } from "react";
 import { APImovieDetails } from "services/Api"
 import BackLink from "components/BackLink";
+import { MovieWrapper, Main, Image, Description } from "./MovieDetails.styled";
 
 const MovieDetails = () => {
 
@@ -35,12 +36,11 @@ const MovieDetails = () => {
       : 'https://i.ibb.co/n6tGsmL/asdasda.jpg';
 
     return (
-<main>
-    {/* to={backLinkHref} */}
+<Main>
     <BackLink to={backLinkHref}>back</BackLink>
-    <div>
-        <img src={poster} alt='poster' width='200'/>
-        <div>
+    <MovieWrapper>
+        <Image src={poster} alt="" width="250" />
+        <Description>
             <h1>{title} ({new Date(release_date).getFullYear()})</h1>
             <p>User score: {Math.ceil(vote_average * 10)} %</p>
             <h2>Overview</h2>
@@ -50,7 +50,8 @@ const MovieDetails = () => {
                 ? genres.map(genre => genre.name).join(', ')
                 : '-' }
             </p>
-        </div>
+        </Description>
+        </MovieWrapper>
         <div>
             <h3>Additional information</h3>
             <ul>
@@ -60,12 +61,12 @@ const MovieDetails = () => {
                 <li>
                     <Link to={'reviews'} state={{ from: location?.state?.from }}>Reviews</Link>
                 </li>
-            </ul>
-            
+            </ul>            
         </div>
-    </div>
-    <Outlet />
-</main>
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
+</Main>
     )
 }
 
