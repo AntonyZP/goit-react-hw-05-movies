@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MovieSearchList = ({ movies }) => {
   const location = useLocation();
-  console.log(movies)
+  
   return (
     <div>
       {movies && (
