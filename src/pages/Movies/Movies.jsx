@@ -4,7 +4,6 @@ import SearchBar from 'components/SearchBar';
 import MovieSearchList from 'components/MovieSearchList';
 import { APIsearchMovie } from "services/Api"
 
-
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null);
@@ -20,7 +19,6 @@ const Movies = () => {
     if (!query) {
       return;
     }
-    
     async function getMoviesByName () {
       try {
         const response = await APIsearchMovie(query);
@@ -55,6 +53,3 @@ const Movies = () => {
 
 export default Movies;
 
-// {searchedMovies && searchedMovies.length !== 0 && (
-//     <SearchedMoviesList movies={searchedMovies} />
-//   )}
