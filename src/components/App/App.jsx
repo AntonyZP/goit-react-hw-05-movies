@@ -1,39 +1,33 @@
-import {Profile} from 'components/Profile/Profile'
-import {Statistics} from 'components/Statistics/Statistics'
-import {FriendList} from 'components/FriendList/FriendList'
-import {TransactionHistory} from 'components/TransactionHistory/TransactionHistory'
+import { Route, Routes } from "react-router-dom";
+// import { lazy } from "react";
+import Home from "pages/Home";
+import MovieDetails from "pages/MovieDetails";
+import Movies from "pages/Movies";
+import SharedLayout from "components/SharedLayout";
+import Cast from "components/Cast";
+import Reviews from "components/Reviews";
 
-
-import user from '../../data/user.json';
-import data from '../../data/data.json';
-import friends from '../../data/friends.json';
-import transactions from '../../data/transactions.json';
+// const Home = lazy(() => import('../../pages/Home'));
+// const Movies = lazy(() => import('../../pages/Movies'));
+// const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
+// const Cast = lazy(() => import('components/Cast'));
+// const Reviews = lazy(() => import('components/Reviews'));
 
 
 
 export const App = () => {
     return (
-     <div> 
-      <div>
-       <div>
-        <div>
-        <Profile
- username={user.username}
- tag={user.tag}
- location={user.location}
- avatar={user.avatar}
- stats={user.stats}
-/>
-       </div>
-       <Statistics title="Upload stats" stats={data} />
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />}/>
+          <Route path='movies' element={<Movies />} />
+          <Route path='/movies/:movieId' element={<MovieDetails />}>
+            <Route path='cast' element={<Cast />}></Route>
+            <Route path='reviews' element={<Reviews />}></Route>
+          </Route>
 
-     </div>
-     <FriendList friends={friends} />;
-     </div>
-     <TransactionHistory items={transactions} />;
-
-     </div>
-
+          <Route path='*' element={<Home />} />
+        </Route>
+      </Routes>
     );
   };
-
